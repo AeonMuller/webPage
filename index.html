@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TechCore Solutions | Consultoría y Desarrollo Especializado</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', sans-serif; background-color: #ffffff; color: #09090b; }
+        .font-mono { font-family: 'JetBrains Mono', monospace; }
+        
+        /* Cursor de Máquina de Escribir (Ajustado a Gris Oscuro) */
+        .cursor {
+            display: inline-block;
+            width: 3px;
+            height: 1.1em;
+            background-color: #18181b; 
+            margin-left: 4px;
+            animation: blink 1s infinite;
+            vertical-align: middle;
+        }
+        @keyframes blink { 0%, 50% { opacity: 1; } 51%, 100% { opacity: 0; } }
+        
+        /* Animaciones de Revelado */
+        .fade-reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 1s cubic-bezier(0.2, 0.8, 0.2, 1);
+        }
+        .fade-reveal.is-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Fondos Sutiles */
+        .bg-subtle-grid {
+            background-image: radial-gradient(#e4e4e7 1px, transparent 1px);
+            background-size: 30px 30px;
+        }
+        
+        /* Transición de Altura para el Acordeón FAQ */
+        .accordion-content {
+            transition: max-height 0.3s ease-out, opacity 0.3s ease-out;
+            max-height: 0;
+            opacity: 0;
+            overflow: hidden;
+        }
+        .accordion-content.open {
+            max-height: 200px; /* Ajustar si el texto es muy largo */
+            opacity: 1;
+        }
+    </style>
+</head>
+<body class="antialiased overflow-x-hidden selection:bg-zinc-900 selection:text-white">
+
+    <nav class="fixed w-full z-50 bg-white/90 border-b border-zinc-200 backdrop-blur-md" id="navbar">
+        <div class="max-w-7xl mx-auto px-6 h-20 flex justify-between items-center">
+            <span class="text-xl font-bold tracking-tighter uppercase text-zinc-950">TechCore<span class="text-zinc-400">.</span></span>
+            
+            <div class="hidden md:flex items-center space-x-8 text-[11px] font-bold uppercase tracking-[0.2em] text-zinc-500">
+                <a href="#nosotros" class="hover:text-zinc-900 transition-colors">Nosotros</a>
+                <a href="#servicios" class="hover:text-zinc-900 transition-colors">Servicios</a>
+                <a href="#stack" class="hover:text-zinc-900 transition-colors">Tecnología</a>
+                <a href="#planes" class="hover:text-zinc-900 transition-colors">Inversión</a>
+                <a href="#contacto" class="bg-zinc-950 text-white px-5 py-2.5 rounded-sm hover:bg-zinc-800 transition-all">Contacto</a>
+            </div>
+
+            <button id="mobile-menu-btn" class="md:hidden text-zinc-900 focus:outline-none">
+                <i data-lucide="menu" class="w-6 h-6"></i>
+            </button>
+        </div>
+
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-b border-zinc-200 absolute w-full left-0 shadow-xl">
+            <div class="flex flex-col px-6 py-4 space-y-4 text-xs font-bold uppercase tracking-widest text-zinc-600">
+                <a href="#nosotros" class="mobile-link hover:text-zinc-950">Nosotros</a>
+                <a href="#servicios" class="mobile-link hover:text-zinc-950">Servicios</a>
+                <a href="#stack" class="mobile-link hover:text-zinc-950">Tecnología</a>
+                <a href="#planes" class="mobile-link hover:text-zinc-950">Inversión</a>
+                <a href="#faq" class="mobile-link hover:text-zinc-950">FAQ</a>
+                <a href="#contacto" class="mobile-link inline-block text-center mt-4 bg-zinc-950 text-white py-3 rounded-sm">Iniciar Consulta</a>
+            </div>
+        </div>
+    </nav>
+
+    <section class="relative min-h-screen flex items-center pt-20 bg-subtle-grid">
+        <div class="max-w-7xl mx-auto px-6 w-full grid lg:grid-cols-12 gap-12 items-center">
+            
+            <div class="lg:col-span-7 fade-reveal">
+                <div class="inline-block border border-zinc-200 bg-white px-4 py-1.5 rounded-full text-[10px] font-bold uppercase tracking-widest text-zinc-500 mb-6">
+                    Consultoría Tecnológica Especializada
+                </div>
+                <h1 class="text-5xl md:text-7xl font-bold tracking-tight text-zinc-950 leading-[1.1] mb-8">
+                    Ingeniería para <br>
+                    <span id="typewriter-text" class="text-zinc-500 font-mono"></span><span class="cursor"></span>
+                </h1>
+                <p class="text-xl text-zinc-500 max-w-xl mb-10 leading-relaxed font-light">
+                    Soluciones tecnológicas de alto impacto. Nos especializamos en robustecer su infraestructura digital mediante auditorías críticas y desarrollo de software escalable.
+                </p>
+                <div class="flex flex-wrap gap-4">
+                    <a href="#contacto" class="px-10 py-5 bg-zinc-950 text-white text-xs font-bold uppercase tracking-widest hover:bg-zinc-800 transition-all shadow-lg">Iniciar Consulta</a>
+                    <a href="#planes" class="px-10 py-5 border border-zinc-300 text-zinc-900 bg-white text-xs font-bold uppercase tracking-widest hover:bg-zinc-50 transition-all">Ver Planes</a>
+                </div>
+            </div>
+
+            <div class="hidden lg:flex lg:col-span-5 items-center justify-center fade-reveal" style="transition-delay: 200ms;">
+                <div class="relative w-96 h-96 border border-zinc-200 rounded-full flex items-center justify-center animate-[spin_20s_linear_infinite] bg-white shadow-xl">
+                    <div class="absolute -top-2 left-1/2 w-4 h-4 bg-zinc-900 rounded-full shadow-[0_0_15px_rgba(24,24,27,0.3)]"></div>
+                    <div class="w-72 h-72 border border-zinc-200 rounded-full flex items-center justify-center">
+                        <div class="w-48 h-48 border border-zinc-300 rounded-full border-dashed"></div>
+                    </div>
+                    <div class="absolute inset-0 flex items-center justify-center animate-[spin_20s_linear_infinite_reverse]">
+                         <i data-lucide="cpu" class="text-zinc-300 w-10 h-10"></i>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <section id="nosotros" class="py-32 bg-zinc-950 text-zinc-50 overflow-hidden relative border-y border-zinc-800">
+        <div class="max-w-7xl mx-auto px-6 relative z-10">
+            <div class="grid lg:grid-cols-2 gap-20 items-center">
+                <div class="fade-reveal">
+                    <h2 class="text-xs font-bold text-zinc-400 uppercase tracking-[0.4em] mb-6">Nuestra Identidad</h2>
+                    <h3 class="text-4xl font-bold mb-8 leading-tight text-white">Pequeños en equipo, <br><span class="text-zinc-500">Grandes en ejecución.</span></h3>
+                    <div class="space-y-6 text-zinc-400 text-lg leading-relaxed">
+                        <p>Somos un grupo de desarrolladores y auditores apasionados por la perfección técnica. A diferencia de las grandes corporaciones, con nosotros tratará directamente con los ingenieros a cargo de su proyecto.</p>
+                        <p>Nuestra filosofía es la honestidad radical: no prometemos lo imposible, entregamos software que funciona. Un equipo compacto nos permite ser ágiles, enfocarnos en los detalles y garantizar la calidad que los proyectos profesionales demandan.</p>
+                    </div>
+                </div>
+                <div class="grid grid-cols-2 gap-4 fade-reveal" style="transition-delay: 200ms;">
+                    <div class="p-8 bg-zinc-900 border border-zinc-800 rounded-sm text-center">
+                        <div class="text-3xl font-bold text-white mb-2">100%</div>
+                        <div class="text-[10px] text-zinc-500 font-bold uppercase tracking-widest">Atención Directa</div>
+                    </div>
+                    <div class="p-8 bg-zinc-900 border border-zinc-800 rounded-sm text-center">
+                        <div class="text-3xl font-bold text-white mb-2">Senior</div>
+                        <div class="text-[10px] text-zinc-500 font-bold uppercase tracking-widest">Nivel de Experiencia</div>
+                    </div>
+                    <div class="col-span-2 p-8 bg-zinc-100 rounded-sm text-zinc-950 text-center">
+                        <p class="text-sm font-semibold italic">"Calidad profesional con la transparencia de un socio tecnológico de confianza."</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="servicios" class="py-32 bg-zinc-50">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="mb-20 fade-reveal">
+                <h2 class="text-4xl font-bold text-zinc-950 tracking-tighter">Capacidades Técnicas</h2>
+                <p class="text-zinc-500 mt-4 max-w-2xl">Ofrecemos un espectro definido de servicios donde podemos garantizar excelencia absoluta. No hacemos de todo, hacemos lo que dominamos.</p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="p-10 border border-zinc-200 bg-white hover:border-zinc-400 hover:shadow-2xl transition-all duration-500 group fade-reveal">
+                    <div class="w-12 h-12 bg-zinc-100 text-zinc-900 rounded-sm flex items-center justify-center mb-8 group-hover:bg-zinc-950 group-hover:text-white transition-colors">
+                        <i data-lucide="shield-alert"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-4 text-zinc-950">Auditoría de TI</h3>
+                    <p class="text-zinc-500 text-sm mb-6 leading-relaxed">Evaluación profunda de activos y procesos tecnológicos para mitigación de riesgos.</p>
+                    <ul class="space-y-4 border-t border-zinc-100 pt-6">
+                        <li class="text-xs text-zinc-500"><strong class="text-zinc-900 block mb-1 uppercase tracking-wider">Presencial:</strong> Inspección de infraestructura física, cuartos de servidores y políticas operativas.</li>
+                        <li class="text-xs text-zinc-500"><strong class="text-zinc-900 block mb-1 uppercase tracking-wider">Remoto:</strong> Análisis de vulnerabilidades de software, pentesting y revisión de seguridad en la nube.</li>
+                    </ul>
+                </div>
+
+                <div class="p-10 border border-zinc-200 bg-white hover:border-zinc-400 hover:shadow-2xl transition-all duration-500 group fade-reveal" style="transition-delay: 100ms;">
+                    <div class="w-12 h-12 bg-zinc-100 text-zinc-900 rounded-sm flex items-center justify-center mb-8 group-hover:bg-zinc-950 group-hover:text-white transition-colors">
+                        <i data-lucide="layout-template"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-4 text-zinc-950">Desarrollo Web</h3>
+                    <p class="text-zinc-500 text-sm mb-6 leading-relaxed">Interfaces corporativas y comerciales diseñadas para la conversión y el rendimiento puro.</p>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="px-3 py-1 bg-zinc-100 text-zinc-600 text-[10px] font-bold uppercase tracking-widest rounded-sm">Rendimiento</span>
+                        <span class="px-3 py-1 bg-zinc-100 text-zinc-600 text-[10px] font-bold uppercase tracking-widest rounded-sm">E-Commerce</span>
+                        <span class="px-3 py-1 bg-zinc-100 text-zinc-600 text-[10px] font-bold uppercase tracking-widest rounded-sm">SEO Técnico</span>
+                    </div>
+                </div>
+
+                <div class="p-10 border border-zinc-200 bg-white hover:border-zinc-400 hover:shadow-2xl transition-all duration-500 group fade-reveal" style="transition-delay: 200ms;">
+                    <div class="w-12 h-12 bg-zinc-100 text-zinc-900 rounded-sm flex items-center justify-center mb-8 group-hover:bg-zinc-950 group-hover:text-white transition-colors">
+                        <i data-lucide="terminal-square"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-4 text-zinc-950">Software en Línea</h3>
+                    <p class="text-zinc-500 text-sm mb-6 leading-relaxed">Sistemas escalables para la gestión operativa. Arquitecturas backend sólidas y seguras.</p>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="px-3 py-1 bg-zinc-100 text-zinc-600 text-[10px] font-bold uppercase tracking-widest rounded-sm">Plataformas SaaS</span>
+                        <span class="px-3 py-1 bg-zinc-100 text-zinc-600 text-[10px] font-bold uppercase tracking-widest rounded-sm">APIs RESTful</span>
+                        <span class="px-3 py-1 bg-zinc-100 text-zinc-600 text-[10px] font-bold uppercase tracking-widest rounded-sm">Bases de Datos</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="stack" class="py-20 bg-white border-y border-zinc-100">
+        <div class="max-w-7xl mx-auto px-6 fade-reveal">
+            <h3 class="text-center text-[10px] font-bold text-zinc-400 uppercase tracking-[0.3em] mb-10">Stack Tecnológico que dominamos</h3>
+            <div class="flex flex-wrap justify-center items-center gap-10 md:gap-16 opacity-70 grayscale">
+                <span class="text-xl font-bold font-mono tracking-tighter">React.js</span>
+                <span class="text-xl font-bold font-mono tracking-tighter">Node.js</span>
+                <span class="text-xl font-bold font-mono tracking-tighter">PostgreSQL</span>
+                <span class="text-xl font-bold font-mono tracking-tighter">AWS Cloud</span>
+                <span class="text-xl font-bold font-mono tracking-tighter">Docker</span>
+                <span class="text-xl font-bold font-mono tracking-tighter">Next.js</span>
+            </div>
+        </div>
+    </section>
+
+    <section id="planes" class="py-32 bg-white">
+        <div class="max-w-5xl mx-auto px-6">
+            <div class="text-center mb-16 fade-reveal">
+                <h2 class="text-3xl font-bold mb-4 text-zinc-950 uppercase tracking-tighter">Modelos de Inversión</h2>
+                <p class="text-zinc-500 max-w-xl mx-auto">Diseñamos el plan financiero que mejor se ajuste al flujo y certidumbre que requiere su proyecto.</p>
+            </div>
+
+            <div class="overflow-x-auto fade-reveal border border-zinc-200 shadow-sm rounded-sm">
+                <table class="w-full text-left bg-white border-collapse">
+                    <thead>
+                        <tr class="bg-zinc-50 text-zinc-900 text-[10px] font-bold uppercase tracking-[0.2em] border-b border-zinc-200">
+                            <th class="p-6 border-r border-zinc-200 w-1/3">Características</th>
+                            <th class="p-6 border-r border-zinc-200 w-1/3 text-zinc-500">Inversión Completa</th>
+                            <th class="p-6 w-1/3 bg-zinc-950 text-white relative">
+                                Por Objetivos
+                                <span class="absolute top-2 right-4 text-[8px] bg-white text-zinc-950 px-2 py-0.5 rounded-full">Recomendado</span>
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody class="text-sm text-zinc-600">
+                        <tr class="border-b border-zinc-100">
+                            <td class="p-6 font-bold text-zinc-900 border-r border-zinc-100">Forma de Pago</td>
+                            <td class="p-6 border-r border-zinc-100">50% Anticipo / 50% al finalizar</td>
+                            <td class="p-6 bg-zinc-50/50">Pagos divididos por hitos demostrables</td>
+                        </tr>
+                        <tr class="border-b border-zinc-100">
+                            <td class="p-6 font-bold text-zinc-900 border-r border-zinc-100">Flexibilidad de Alcance</td>
+                            <td class="p-6 border-r border-zinc-100">Fijo (requiere control de cambios)</td>
+                            <td class="p-6 bg-zinc-50/50 font-bold text-zinc-900">Alta (Adaptable en cada sprint)</td>
+                        </tr>
+                        <tr class="border-b border-zinc-100">
+                            <td class="p-6 font-bold text-zinc-900 border-r border-zinc-100">Despliegue y Pruebas</td>
+                            <td class="p-6 border-r border-zinc-100">Entrega monolítica final</td>
+                            <td class="p-6 bg-zinc-50/50">Revisiones semanales y entregas continuas</td>
+                        </tr>
+                        <tr>
+                            <td class="p-6 font-bold text-zinc-900 border-r border-zinc-100">Garantía y Soporte</td>
+                            <td class="p-6 border-r border-zinc-100">6 meses post-entrega</td>
+                            <td class="p-6 bg-zinc-50/50">Acompañamiento continuo durante el proyecto</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            
+            <div class="mt-12 text-center fade-reveal">
+                <p class="text-xs text-zinc-400 mb-8 italic">* La modalidad "Por Objetivos" es ideal para desarrollo de software continuo, reduciendo el riesgo financiero.</p>
+                <a href="#contacto" class="inline-block border-2 border-zinc-950 text-zinc-950 px-10 py-4 text-[10px] font-bold uppercase tracking-widest hover:bg-zinc-950 hover:text-white transition-all">Solicitar Cotización</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="faq" class="py-32 bg-zinc-50 border-t border-zinc-200">
+        <div class="max-w-4xl mx-auto px-6 fade-reveal">
+            <h2 class="text-3xl font-bold mb-10 text-center text-zinc-950">Preguntas Frecuentes</h2>
+            <div class="space-y-4">
+                
+                <div class="border border-zinc-200 bg-white rounded-sm">
+                    <button class="faq-toggle w-full px-6 py-5 text-left font-bold text-sm text-zinc-900 flex justify-between items-center focus:outline-none">
+                        ¿Atienden proyectos fuera de la ciudad o el país?
+                        <i data-lucide="chevron-down" class="w-4 h-4 text-zinc-400 transition-transform duration-300"></i>
+                    </button>
+                    <div class="accordion-content">
+                        <p class="px-6 pb-5 text-sm text-zinc-500 leading-relaxed">
+                            Absolutamente. Nuestro equipo opera de manera remota a nivel global. Para los servicios de "Auditoría TI Presencial", coordinamos viáticos y logística según la ubicación de sus instalaciones corporativas. Por ahora, sería dentro de Monterrey, Nuevo León y su área metropolitana. El desarrollo de software es 100% digital.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="border border-zinc-200 bg-white rounded-sm">
+                    <button class="faq-toggle w-full px-6 py-5 text-left font-bold text-sm text-zinc-900 flex justify-between items-center focus:outline-none">
+                        ¿Cómo funciona el esquema de pago "Por Objetivos"?
+                        <i data-lucide="chevron-down" class="w-4 h-4 text-zinc-400 transition-transform duration-300"></i>
+                    </button>
+                    <div class="accordion-content">
+                        <p class="px-6 pb-5 text-sm text-zinc-500 leading-relaxed">
+                            Dividimos el proyecto completo en módulos (ej. Sistema de Login, Panel de Control, Pasarela de Pagos). Usted aprueba cada módulo, nosotros lo desarrollamos y usted solo paga cuando dicho módulo está terminado, probado y aprobado en un entorno de pruebas.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="border border-zinc-200 bg-white rounded-sm">
+                    <button class="faq-toggle w-full px-6 py-5 text-left font-bold text-sm text-zinc-900 flex justify-between items-center focus:outline-none">
+                        ¿Brindan mantenimiento después de entregar el software?
+                        <i data-lucide="chevron-down" class="w-4 h-4 text-zinc-400 transition-transform duration-300"></i>
+                    </button>
+                    <div class="accordion-content">
+                        <p class="px-6 pb-5 text-sm text-zinc-500 leading-relaxed">
+                            Sí. Dependiendo de la magnitud del sistema, ofrecemos pólizas de mantenimiento mensual para actualizaciones de seguridad, gestión de servidores (AWS/DigitalOcean) y adición de nuevas funcionalidades menores. 
+                        </p>
+                        <p class="px-6 pb-5 text-sm text-zinc-500 leading-relaxed italic">
+                            *Todo esto dentro del rango de 4 meses después de haber entregado el proyecto*
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section id="contacto" class="py-32 bg-white border-t border-zinc-200">
+        <div class="max-w-5xl mx-auto px-6 fade-reveal">
+            <div class="grid md:grid-cols-2 gap-16">
+                <div>
+                    <h2 class="text-4xl font-bold mb-6 text-zinc-950">Hablemos con honestidad.</h2>
+                    <p class="text-zinc-500 mb-8 leading-relaxed">
+                        Cuéntenos su desafío técnico. Un ingeniero (no un vendedor) revisará su caso y le daremos una visión realista, sin tecnicismos para confundir ni promesas que la tecnología actual no pueda sostener.
+                    </p>
+                    <div class="space-y-6">
+                        <div class="flex items-center gap-4 text-xs font-bold text-zinc-400">
+                            <div class="w-10 h-10 bg-zinc-100 flex items-center justify-center rounded-sm">
+                                <i data-lucide="mail" class="text-zinc-900 w-4 h-4"></i>
+                            </div>
+                            proyectos@techcore.com
+                        </div>
+                        <div class="flex items-center gap-4 text-xs font-bold text-zinc-400">
+                            <div class="w-10 h-10 bg-zinc-100 flex items-center justify-center rounded-sm">
+                                <i data-lucide="globe-2" class="text-zinc-900 w-4 h-4"></i>
+                            </div>
+                            Disponibilidad Global / Remote First
+                        </div>
+                    </div>
+                </div>
+                
+                <form id="contact-form" class="space-y-4 bg-zinc-50 p-8 border border-zinc-200 rounded-sm">
+                    <input type="text" placeholder="NOMBRE O EMPRESA" required class="w-full p-4 bg-white border border-zinc-200 text-xs font-bold tracking-widest outline-none focus:border-zinc-900 transition-colors">
+                    <input type="email" placeholder="CORREO ELECTRÓNICO" required class="w-full p-4 bg-white border border-zinc-200 text-xs font-bold tracking-widest outline-none focus:border-zinc-900 transition-colors">
+                    <textarea rows="4" placeholder="BREVE DESCRIPCIÓN DE SU REQUERIMIENTO" required class="w-full p-4 bg-white border border-zinc-200 text-xs font-bold tracking-widest outline-none focus:border-zinc-900 transition-colors resize-none"></textarea>
+                    <button type="submit" class="w-full py-4 bg-zinc-950 text-white text-[10px] font-bold uppercase tracking-[0.2em] hover:bg-zinc-800 transition-all mt-2">
+                        Enviar Requerimiento
+                    </button>
+                    <p class="text-[10px] text-zinc-400 text-center mt-4">Responderemos con un diagnóstico inicial en menos de 24h.</p>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <footer class="py-12 bg-zinc-950 border-t border-zinc-900 text-center md:text-left text-zinc-400">
+        <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-6">
+            <span class="text-sm font-bold tracking-tighter uppercase text-white">TechCore<span class="text-zinc-500">.</span></span>
+            <div class="flex gap-6 text-[10px] font-bold uppercase tracking-[0.2em]">
+                <a href="privacidad.html" class="hover:text-white transition-colors">Aviso de Privacidad</a>
+                <a href="terminos.html" class="hover:text-white transition-colors">Términos</a>
+            </div>
+            <p class="text-[10px] font-bold uppercase tracking-[0.2em]">© 2026 TechCore Solutions. Honestidad en Ingeniería.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Iniciar Íconos
+        lucide.createIcons();
+
+        // ----------------------------------------
+        // Máquina de escribir
+        // ----------------------------------------
+        const phrases = ["Auditoría TI", "Software en Línea", "Desarrollo Web", "Sistemas Cloud"];
+        const typewriterElement = document.getElementById('typewriter-text');
+        let phraseIdx = 0;
+        let charIdx = 0;
+        let deleting = false;
+
+        function type() {
+            const current = phrases[phraseIdx];
+            if (deleting) {
+                typewriterElement.textContent = current.substring(0, charIdx - 1);
+                charIdx--;
+            } else {
+                typewriterElement.textContent = current.substring(0, charIdx + 1);
+                charIdx++;
+            }
+
+            let speed = deleting ? 40 : 80;
+
+            if (!deleting && charIdx === current.length) {
+                speed = 2000;
+                deleting = true;
+            } else if (deleting && charIdx === 0) {
+                deleting = false;
+                phraseIdx = (phraseIdx + 1) % phrases.length;
+                speed = 500;
+            }
+            setTimeout(type, speed);
+        }
+        window.onload = type;
+
+        // ----------------------------------------
+        // Observer para Animación Fade-Reveal
+        // ----------------------------------------
+        const revealObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) entry.target.classList.add('is-visible');
+            });
+        }, { threshold: 0.1 });
+        document.querySelectorAll('.fade-reveal').forEach(el => revealObserver.observe(el));
+
+        // ----------------------------------------
+        // Control del Menú Móvil
+        // ----------------------------------------
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const mobileLinks = document.querySelectorAll('.mobile-link');
+        const menuIcon = mobileMenuBtn.querySelector('i');
+
+        function toggleMenu() {
+            mobileMenu.classList.toggle('hidden');
+            if(mobileMenu.classList.contains('hidden')) {
+                menuIcon.setAttribute('data-lucide', 'menu');
+            } else {
+                menuIcon.setAttribute('data-lucide', 'x');
+            }
+            lucide.createIcons(); // Refrescar icono
+        }
+
+        mobileMenuBtn.addEventListener('click', toggleMenu);
+        mobileLinks.forEach(link => link.addEventListener('click', toggleMenu));
+
+        // ----------------------------------------
+        // Acordeón FAQ
+        // ----------------------------------------
+        const faqToggles = document.querySelectorAll('.faq-toggle');
+        faqToggles.forEach(toggle => {
+            toggle.addEventListener('click', () => {
+                const content = toggle.nextElementSibling;
+                const icon = toggle.querySelector('i');
+                
+                // Alternar el actual
+                content.classList.toggle('open');
+                if (content.classList.contains('open')) {
+                    icon.style.transform = "rotate(180deg)";
+                } else {
+                    icon.style.transform = "rotate(0deg)";
+                }
+            });
+        });
+
+        // ----------------------------------------
+        // Feedback Formulario Contacto
+        // ----------------------------------------
+        document.getElementById('contact-form').onsubmit = (e) => {
+            e.preventDefault();
+            const btn = e.target.querySelector('button');
+            const originalText = btn.textContent;
+            
+            btn.textContent = "RECIBIDO. CONTACTAREMOS PRONTO";
+            btn.classList.replace('bg-zinc-950', 'bg-zinc-400'); // Un color de éxito sutil en escala de grises
+            btn.classList.replace('hover:bg-zinc-800', 'hover:bg-zinc-500');
+            
+            setTimeout(() => {
+                btn.textContent = originalText;
+                btn.classList.replace('bg-zinc-400', 'bg-zinc-950');
+                btn.classList.replace('hover:bg-zinc-500', 'hover:bg-zinc-800');
+                e.target.reset();
+            }, 4000);
+        };
+    </script>
+</body>
+</html>
