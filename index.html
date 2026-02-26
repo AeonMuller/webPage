@@ -336,10 +336,11 @@
                 </div>
                 
                 <form id="contact-form" class="space-y-4 bg-zinc-50 p-8 border border-zinc-200 rounded-sm">
-                    <input type="text" placeholder="NOMBRE O EMPRESA" required class="w-full p-4 bg-white border border-zinc-200 text-xs font-bold tracking-widest outline-none focus:border-zinc-900 transition-colors">
-                    <input type="email" placeholder="CORREO ELECTRÓNICO" required class="w-full p-4 bg-white border border-zinc-200 text-xs font-bold tracking-widest outline-none focus:border-zinc-900 transition-colors">
-                    <textarea rows="4" placeholder="BREVE DESCRIPCIÓN DE SU REQUERIMIENTO" required class="w-full p-4 bg-white border border-zinc-200 text-xs font-bold tracking-widest outline-none focus:border-zinc-900 transition-colors resize-none"></textarea>
-                    <button type="submit" class="w-full py-4 bg-zinc-950 text-white text-[10px] font-bold uppercase tracking-[0.2em] hover:bg-zinc-800 transition-all mt-2">
+                    <input type="text" name="user_name" placeholder="NOMBRE O EMPRESA" required class="w-full p-4 bg-white border border-zinc-200 text-xs font-bold tracking-widest outline-none focus:border-zinc-900 transition-colors">
+                    <input type="email" name="user_email" placeholder="CORREO ELECTRÓNICO" required class="w-full p-4 bg-white border border-zinc-200 text-xs font-bold tracking-widest outline-none focus:border-zinc-900 transition-colors">
+                    <textarea name="message" rows="4" placeholder="BREVE DESCRIPCIÓN DE SU REQUERIMIENTO" required class="w-full p-4 bg-white border border-zinc-200 text-xs font-bold tracking-widest outline-none focus:border-zinc-900 transition-colors resize-none"></textarea>
+                    
+                    <button type="submit" id="submit-btn" class="w-full py-4 bg-zinc-950 text-white text-[10px] font-bold uppercase tracking-[0.2em] hover:bg-zinc-800 transition-all mt-2">
                         Enviar Requerimiento
                     </button>
                     <p class="text-[10px] text-zinc-400 text-center mt-4">Responderemos con un diagnóstico inicial en menos de 24h.</p>
@@ -465,6 +466,51 @@
                 e.target.reset();
             }, 4000);
         };
+    </script>
+
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+
+    <script type="text/javascript">
+    (function(){
+        //PUBLIC KEY DE EMAILJS
+        emailjs.init("VGWUfudmUdo9Yw--z");
+    })();
+
+    document.getElementById('contact-form').onsubmit = function(event) {
+        event.preventDefault();
+        
+        const btn = document.getElementById('submit-btn');
+        const originalText = btn.textContent;
+
+        btn.textContent = "ENVIANDO...";
+        btn.disabled = true;
+
+        //'YOUR_SERVICE_ID' y 'YOUR_TEMPLATE_ID'
+        emailjs.sendForm('service_onjsaph', 'template_ofrznts', this)
+            .then(function() {
+                // Éxito
+                btn.textContent = "RECIBIDO. CONTACTAREMOS PRONTO";
+                btn.classList.replace('bg-zinc-950', 'bg-emerald-600'); 
+                
+                setTimeout(() => {
+                    btn.textContent = originalText;
+                    btn.classList.replace('bg-emerald-600', 'bg-zinc-950');
+                    btn.disabled = false;
+                    document.getElementById('contact-form').reset();
+                }, 4000);
+            }, function(error) {
+                // Error
+                console.log('FAILED...', error);
+                btn.textContent = "ERROR AL ENVIAR. REINTENTA";
+                btn.classList.replace('bg-zinc-950', 'bg-red-600');
+                
+                setTimeout(() => {
+                    btn.textContent = originalText;
+                    btn.classList.replace('bg-red-600', 'bg-zinc-950');
+                    btn.disabled = false;
+                }, 4000);
+            });
+    };
     </script>
 </body>
 </html>
